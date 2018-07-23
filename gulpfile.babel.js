@@ -14,8 +14,8 @@ import autoprefixer from 'gulp-autoprefixer';
 
 // Replace this with anything you npm install that 
 // should be part of the website.
-NPM_INSTALLED_LIBS = [
-  'node_modules/lazysizes/lazysizes.min.js',
+const NPM_INSTALLED_LIBS = [
+  // 'node_modules/lazysizes/lazysizes.min.js',
 ]
 
 const server = browserSync.create();
@@ -73,6 +73,10 @@ const clean = (dest) => {
 // Copies third assets that you npm install like
 // libraries and frameworks
 const copyLibs = (dest) => {
+  if (NPM_INSTALLED_LIBS.length === 0) {
+    return;
+  }
+
   return gulp.src(NPM_INSTALLED_LIBS).pipe(gulp.dest(`${ dest }/lib`));
 }
 
