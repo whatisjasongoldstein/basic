@@ -16,6 +16,6 @@ npm version patch
 
 * Nunjucks templates, with a fancy `component` include function and `markdown` filter
 * SASS
-* Images, javascript (no compiling yet)
+* Babel+Rollup. Defaults to last 2 versions and IIFE
+* Images, no processing yet
 * Setup to work with GitHub pages by default
-
