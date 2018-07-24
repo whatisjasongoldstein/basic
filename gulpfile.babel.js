@@ -11,12 +11,21 @@ import { manageEnvironment } from './template';
 import sass from 'gulp-sass';
 import autoprefixer from 'gulp-autoprefixer';
 
+// JS
+import gulpFn from 'gulp-fn';
+import { rollup } from 'rollup';
+import rollupBabelPlugin from 'rollup-plugin-babel';
+import rollupNodeResolve from 'rollup-plugin-node-resolve';
+
 
 // Replace this with anything you npm install that 
 // should be part of the website.
 const NPM_INSTALLED_LIBS = [
   // 'node_modules/lazysizes/lazysizes.min.js',
 ]
+
+// What should rollup generate from its bundle files?
+const jsExportFormat = 'iife';
 
 const server = browserSync.create();
 
@@ -47,11 +56,46 @@ const createCSS = (dest) => {
     .pipe(gulp.dest(dest))
 }
 
+const babelConf = {
+  babelrc: false,
+  presets: [
+    ['env', {
+      "targets": {
+        "browsers": [
+          "last 2 versions",
+        ]
+      },
+      modules: false
+    }]
+  ]
+};
+
 // Just copies. I'll add rollup one day when I decide how
 // it should lazy load
 const createJS = (dest) => {
-  return gulp.src(['src/**/*.js'])
-    .pipe(gulp.dest(dest))
+  return gulp.src(['src/**/*.bundle.js'])
+    .pipe(gulpFn(function(file) {
+      const inpath = `src/${ file.relative }`;
+      const outpath = `${ dest }/${ file.relative }`;
+
+      return rollup({
+        input: inpath,
+        plugins: [
+          rollupNodeResolve({
+            jsnext: true,
+            browser: true,
+          }),
+          rollupBabelPlugin(babelConf),
+        ],
+      }).then(function(bundle) {
+        return bundle.write({
+          format: jsExportFormat,
+          file: outpath,
+          name: "creative",
+          sourcemap: true,
+        });
+      });
+    }));
 }
 
 // Just copying
