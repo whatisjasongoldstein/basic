@@ -15,7 +15,8 @@ export const manageEnvironment = function(environment) {
   });
 
   environment.addGlobal('component', (template, context) => {
-    return markSafe(environment.render(template, context));
+    const mergedContext = Object.assign({}, this.ctx, context);
+    return markSafe(environment.render(template, mergedContext));
   });
 
 }
