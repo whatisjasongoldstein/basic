@@ -1,21 +1,21 @@
 // Build tools
-import gulp from 'gulp';
-import del from 'del';
-import browserSync from 'browser-sync';
+const gulp = require('gulp');
+const del = require('del');
+const browserSync = require('browser-sync');
 
 // HTML
-import nunjucksRender from 'gulp-nunjucks-render';
-import { manageEnvironment } from './template';
+const nunjucksRender = require('gulp-nunjucks-render');
+const { manageEnvironment } = require('./template');
 
 // CSS
-import sass from 'gulp-sass';
-import autoprefixer from 'gulp-autoprefixer';
+const sass = require('gulp-sass');
+const autoprefixer = require('gulp-autoprefixer');
 
 // JS
-import gulpFn from 'gulp-fn';
-import { rollup } from 'rollup';
-import rollupBabelPlugin from 'rollup-plugin-babel';
-import rollupNodeResolve from 'rollup-plugin-node-resolve';
+const gulpFn = require('gulp-fn');
+const { rollup } = require('rollup');
+const rollupBabelPlugin = require('rollup-plugin-babel');
+const rollupNodeResolve = require('rollup-plugin-node-resolve');
 
 
 // Replace this with anything you npm install that 

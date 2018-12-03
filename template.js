@@ -1,11 +1,11 @@
-import nunjucks from 'nunjucks';
-import marked from 'marked';
+const nunjucks = require('nunjucks');
+const marked = require('marked');
 
 function markSafe(html) {
   return new nunjucks.runtime.SafeString(html);
 }
 
-export const manageEnvironment = function(environment) {
+module.exports.manageEnvironment = (environment) => {
   environment.addFilter('slug', function(str) {
     return str && str.replace(/\s/g, '-', str).toLowerCase();
   });
@@ -14,7 +14,7 @@ export const manageEnvironment = function(environment) {
     return markSafe(marked(String(str)));
   });
 
-  environment.addGlobal('component', (template, context) => {
+  environment.addGlobal('render', (template, context) => {
     const mergedContext = Object.assign({}, this.ctx, context);
     return markSafe(environment.render(template, mergedContext));
   });
