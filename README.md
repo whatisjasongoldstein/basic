@@ -14,7 +14,7 @@ npm version patch
 
 ## Supports
 
-* Nunjucks templates, with a fancy `component` include function and `markdown` filter
+* Nunjucks templates, with a fancy `render` include function and `markdown` filter
 * SASS
 * Babel+Rollup. Defaults to last 2 versions and IIFE
 * Images, no processing yet
