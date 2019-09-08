@@ -1,6 +1,6 @@
 {
   "name": "basic",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -12,23 +12,21 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.7.0",
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
     "browser-sync": "^2.26.5",
     "del": "^3.0.0",
     "gulp": "^4.0.1",
-    "gulp-autoprefixer": "^5.0.0",
+    "gulp-autoprefixer": "^7.0.0",
     "gulp-babel": "^8.0.0",
     "gulp-cli": "^2.2.0",
     "gulp-fn": "0.0.3",
     "gulp-nunjucks-render": "^2.2.3",
     "gulp-sass": "^4.0.2",
-    "marked": "^0.6.2",
+    "marked": "^0.7.0",
     "nunjucks": "^3.2.0",
-    "rollup": "^0.63.5",
-    "rollup-plugin-babel": "^3.0.7",
-    "rollup-plugin-node-resolve": "^3.4.0",
-    "sass": "^1.20.1"
+    "rollup": "^1.21.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-node-resolve": "^5.2.0"
   }
 }
